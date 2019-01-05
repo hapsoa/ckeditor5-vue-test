@@ -14,7 +14,8 @@
     "types": [
       "webpack-env",
       "mocha",
-      "chai"
+      "chai",
+      "ckeditor__ckeditor5-vue"
     ],
     "paths": {
       "@/*": [

@@ -8,6 +8,18 @@
   </div>
 </template>
 
+<script lang="ts">
+import Vue from 'vue';
+import CKEditor from '@ckeditor/ckeditor5-vue';
+
+Vue.use( CKEditor );
+
+export default {
+
+};
+</script>
+
+
 <style lang="scss">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

@@ -28,6 +28,7 @@
     "@ckeditor/ckeditor5-list": "^11.0.3",
     "@ckeditor/ckeditor5-paragraph": "^10.0.4",
     "@ckeditor/ckeditor5-vue": "^1.0.0-beta.1",
+    "firebase": "^5.7.2",
     "postcss-loader": "^3.0.0",
     "raw-loader": "^0.5.1",
     "register-service-worker": "^1.5.2",

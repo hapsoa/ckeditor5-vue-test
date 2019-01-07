@@ -1,6 +1,7 @@
 <template>
   <div>
     <ckeditor :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor>
+    <button type="button" @click="show">click</button>
   </div>
 </template>
 
@@ -15,6 +16,7 @@
 // import LinkPlugin from "@ckeditor/ckeditor5-link/src/link";
 // import ParagraphPlugin from "@ckeditor/ckeditor5-paragraph/src/paragraph";
 // import Image from '@ckeditor/ckeditor5-image/src/image';
+import MyCustomUploadAdapterPlugin from '@/typescripts/MyUploadAdapterExport.ts';
 
 import ClassicEditor from "@ckeditor/ckeditor5-editor-classic/src/classiceditor";
 
@@ -90,7 +92,7 @@ export default {
             "blockQuote",
             "undo",
             "redo",
-            "highlight"
+            "highlight",
           ]
         },
         image: {
@@ -100,9 +102,15 @@ export default {
             "|",
             "imageTextAlternative"
           ]
-        }
+        },
+        extraPlugins: [ MyCustomUploadAdapterPlugin ],
       }
     };
+  },
+  methods: {
+    show() {
+      console.log(this.editorData);
+    }
   }
 };
 </script>

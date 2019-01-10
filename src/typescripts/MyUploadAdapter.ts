@@ -1,3 +1,4 @@
+/*
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 class MyUploadAdapter {
@@ -109,5 +110,7 @@ ClassicEditor
         // ...
     } )
     .catch( (error) => {
-        // console.log( error );
+        console.log( error );
     } );
+
+*/

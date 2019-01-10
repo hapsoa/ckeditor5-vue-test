@@ -16,6 +16,11 @@ const storage = firebase.storage();
 // import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 class MyUploadAdapter {
+  private loader;
+  private url: string;
+  private xhr;
+  private fileArray: object[];
+
   constructor(loader, url) {
     // The FileLoader instance to use during the upload. It sounds scary but do not
     // worry — the loader will be passed into the adapter later on in this guide.
@@ -24,18 +29,25 @@ class MyUploadAdapter {
     // The upload URL in your server back-end. This is the address the XMLHttpRequest
     // will send the image data to.
     this.url = url;
+
+    this.fileArray = [];
   }
 
   // Starts the upload process.
   public async upload() {
     // return await storage.ref().child('asllldf').put(this.loader.file);
 
+    // if () { // 이미지 에디터에 넣었을 때
+
+    // } else { // save버튼 눌렀을 때
+
+    // }
     return new Promise((resolve, reject) => {
-    //   this._initRequest();
-    //   this._initListeners(resolve, reject);
-    //   this._sendRequest();
-    resolve({
-        default: 'https://www.naver.com',
+      //   this._initRequest();
+      //   this._initListeners(resolve, reject);
+      //   this._sendRequest();
+      resolve({
+        default: 'http://ww2.sjkoreancatholic.org/files/testing_image.jpg',
       });
     });
   }
@@ -110,10 +122,12 @@ class MyUploadAdapter {
     const data = new FormData();
     data.append('upload', this.loader.file);
 
-    await storage
-      .ref()
-      .child('ssasdf')
-      .put(this.loader.file);
+    this.fileArray.push(this.loader.file);
+
+    // await storage
+    //   .ref()
+    //   .child('ssasdf')
+    //   .put(this.loader.file);
 
     // Send the request.
     // this.xhr.send( data );

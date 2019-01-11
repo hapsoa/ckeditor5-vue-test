@@ -1,17 +1,7 @@
-import firebase from 'firebase';
-
-// Initialize Firebase
-const config = {
-  apiKey: 'AIzaSyBg5_ZISebZkorGZA3NT2ZO7LuTHDNNUWQ',
-  authDomain: 'gaesory-ec24c.firebaseapp.com',
-  databaseURL: 'https://gaesory-ec24c.firebaseio.com',
-  projectId: 'gaesory-ec24c',
-  storageBucket: 'gaesory-ec24c.appspot.com',
-  messagingSenderId: '752962651932',
-};
-firebase.initializeApp(config);
+import firebase from '@/lib/initFirebase';
 
 const storage = firebase.storage();
+const storageRef = storage.ref();
 
 // import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
@@ -37,26 +27,35 @@ class MyUploadAdapter {
   public async upload() {
     // return await storage.ref().child('asllldf').put(this.loader.file);
 
-    // if () { // 이미지 에디터에 넣었을 때
+    // downloadUrl = await firebase.storage.ref.put(File);
+    // downloadU
+    console.log('file', this.loader.id);
+    const fileRef = storageRef.child(`jaejong/${this.loader.id}`);
 
-    // } else { // save버튼 눌렀을 때
+    const snapshot = await fileRef.put(this.loader.file);
+    console.log('Uploaded a blob or file!');
+    console.log('snapshot', snapshot);
 
-    // }
+    const url = await fileRef.getDownloadURL();
+    console.log('url', url);
+
     return new Promise((resolve, reject) => {
       //   this._initRequest();
       //   this._initListeners(resolve, reject);
       //   this._sendRequest();
       resolve({
-        default: 'http://ww2.sjkoreancatholic.org/files/testing_image.jpg',
+        default: url,
       });
     });
   }
 
   // Aborts the upload process.
   public abort() {
-    if (this.xhr) {
-      this.xhr.abort();
-    }
+    // if (this.xhr) {
+    //   this.xhr.abort();
+    // }
+    console.log(new Error('asdf!!!!!'));
+    alert('asdf!!!!!');
   }
 
   // Initializes the XMLHttpRequest object using the URL passed to the constructor.
@@ -124,10 +123,10 @@ class MyUploadAdapter {
 
     this.fileArray.push(this.loader.file);
 
-    // await storage
-    //   .ref()
-    //   .child('ssasdf')
-    //   .put(this.loader.file);
+    await storage
+      .ref()
+      .child('ssasdf')
+      .put(this.loader.file);
 
     // Send the request.
     // this.xhr.send( data );
